@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<base target="_top">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090c">
+<title>Ferrari | Sign in</title>
+<link rel="icon" href="https://www.edigitalagency.com.au/wp-content/uploads/Ferrari-logo-png-large-icon-badge.png">
+<style>
+*{box-sizing:border-box} :root{color-scheme:dark;font-family:Arial,Helvetica,sans-serif} body{margin:0;min-height:100svh;display:grid;place-items:center;padding:28px;color:#fff;background:#09090c url("https://assets.superhivemarket.com/store/productimage/787217/image/xlarge-d0e64897a897f8e30dd06c79fdf99979.png") center/cover fixed no-repeat;position:relative;isolation:isolate}body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(110deg,rgba(5,5,8,.85),rgba(9,9,12,.34) 55%,rgba(5,5,8,.76))}body:after{content:"";position:fixed;z-index:-1;width:50vw;height:50vw;max-width:560px;max-height:560px;border-radius:50%;right:-10vw;top:-15vw;background:radial-gradient(circle,rgba(228,20,39,.32),transparent 68%);filter:blur(10px);pointer-events:none}.topbar{position:fixed;top:24px;left:28px;right:28px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}.brand img{width:36px;height:44px;object-fit:contain;filter:drop-shadow(0 4px 12px #000)}.home-link{padding:10px 15px;border:1px solid rgba(255,255,255,.3);border-radius:999px;color:#fff;text-decoration:none;font-size:12px;letter-spacing:.08em;background:rgba(255,255,255,.08);backdrop-filter:blur(12px);transition:background .2s}.home-link:hover{background:rgba(255,255,255,.2)}.login-card{position:relative;width:min(460px,100%);margin:58px auto 0;padding:42px clamp(24px,7vw,48px);border:1px solid rgba(255,255,255,.34);border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.17),rgba(255,255,255,.055));box-shadow:0 30px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.28);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);overflow:hidden}.login-card:before{content:"";position:absolute;width:220px;height:220px;right:-110px;top:-135px;border-radius:50%;background:radial-gradient(circle,rgba(255,35,50,.8),transparent 68%);pointer-events:none}.eyebrow{margin:0 0 10px;color:#ff7b84;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}.login-card h1{margin:0;font:700 clamp(32px,7vw,44px)/1.1 Georgia,serif;letter-spacing:-.03em}.intro{margin:12px 0 28px;color:rgba(255,255,255,.7);font-size:14px;line-height:1.6}.field{margin:17px 0}.field label{display:block;margin:0 0 8px;color:rgba(255,255,255,.88);font-size:13px;font-weight:600}.field input{display:block;width:100%;padding:14px 15px;border:1px solid rgba(255,255,255,.28);border-radius:11px;background:rgba(5,5,8,.28);color:#fff;font:14px Arial,sans-serif;outline:none;transition:border .2s,box-shadow .2s}.field input::placeholder{color:rgba(255,255,255,.48)}.field input:focus{border-color:#ff5964;box-shadow:0 0 0 3px rgba(255,45,58,.18)}.submit{width:100%;margin-top:10px;padding:14px;border:1px solid rgba(255,255,255,.35);border-radius:11px;background:linear-gradient(100deg,#a90d1b,#ed2637);color:#fff;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 30px rgba(160,12,27,.32);transition:transform .2s,filter .2s}.submit:hover{transform:translateY(-2px);filter:brightness(1.12)}.footnote{margin:18px 0 0;color:rgba(255,255,255,.55);font-size:11px;line-height:1.6;text-align:center}.login-card:focus-within{border-color:rgba(255,255,255,.52)}@media(max-width:520px){.topbar{top:15px;left:16px;right:16px}.brand{font-size:10px;letter-spacing:.14em}.brand img{width:28px;height:36px}.home-link{padding:9px 12px}.login-card{margin-top:56px;padding-top:34px;padding-bottom:30px}body{background-attachment:scroll}}
+.field[hidden]{display:none!important}
+.mode-switch{display:block;margin:14px auto 0;padding:6px 8px;border:0;background:transparent;color:#ff9da3;font:600 12px Arial,sans-serif;cursor:pointer}
+.mode-switch:hover{text-decoration:underline;color:#fff}
+.form-status{min-height:18px;margin:12px 0 0;color:#ffb9be;font-size:12px;line-height:1.5;text-align:center}
+.form-status:empty{min-height:0;margin-top:0}
+.submit:disabled{opacity:.7;cursor:wait;transform:none}
+/* Compact portrait layout: 320px–360px phones */
+@media (min-width:320px) and (max-width:360px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  body{min-height:100svh;padding:82px 12px 18px;place-items:start center;background-attachment:scroll;background-position:58% center}
+  .topbar{top:11px;left:12px;right:12px;gap:8px;align-items:center}
+  .brand{min-width:0;gap:6px;font-size:9px;letter-spacing:.09em;white-space:nowrap}
+  .brand img{flex:0 0 auto;width:25px;height:32px}
+  .home-link{flex:0 0 auto;padding:8px 9px;font-size:10px;letter-spacing:.02em;white-space:nowrap}
+  .login-card{width:100%;max-width:420px;margin:0 auto;padding:28px 18px 22px;border-radius:18px}
+  .login-card h1{font-size:clamp(29px,9vw,34px)}
+  .eyebrow{font-size:9px;letter-spacing:.14em}
+  .intro{margin:10px 0 20px;font-size:13px;line-height:1.5}
+  .field{margin:14px 0}
+  .field input{padding:13px 12px;font-size:16px}
+  .submit{padding:13px 10px}
+  .mode-switch{max-width:100%;font-size:11px;line-height:1.45;text-align:center}
+  .footnote,.form-status{font-size:10px;overflow-wrap:anywhere}
+}
+@media (max-width:330px){
+  body{padding-inline:8px}
+  .topbar{left:9px;right:9px;gap:5px}
+  .brand{gap:4px;font-size:8px;letter-spacing:.06em}
+  .brand img{width:22px;height:29px}
+  .home-link{padding:7px;font-size:9px}
+  .login-card{padding-inline:14px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="Farrari.html" data-app-page="home"><img src="https://www.edigitalagency.com.au/wp-content/uploads/Ferrari-logo-png-large-icon-badge.png" alt=""><span>Scuderia Ferrari</span></a>
+  <a class="home-link" href="Farrari.html" data-app-page="home">← Back to Ferrari</a>
+</header>
+<main>
+  <form class="login-card" id="auth-form" novalidate>
+    <p class="eyebrow">Official Ferrari experience</p>
+    <h1 id="form-title">Welcome back.</h1>
+    <p class="intro" id="form-intro">Sign in to stay close to the team, the cars and every moment on track.</p>
+    <div class="field" id="name-field" hidden>
+      <label for="na">Name</label>
+      <input type="text" id="na" name="name" placeholder="Enter your name" autocomplete="name" maxlength="80">
+    </div>
+    <div class="field" id="number-field" hidden>
+      <label for="nu">Phone number</label>
+      <input type="tel" id="nu" name="phone" placeholder="Enter your phone number" autocomplete="tel" maxlength="30">
+    </div>
+    <div class="field">
+      <label for="ma">Email address</label>
+      <input type="email" id="ma" name="email" placeholder="Enter your email" autocomplete="email" maxlength="254" required>
+    </div>
+    <div class="field">
+      <label for="pa">Password</label>
+      <input type="password" id="pa" name="password" placeholder="At least 12 characters" autocomplete="current-password" minlength="12" maxlength="128" required>
+    </div>
+    <button class="submit" id="submit-button" type="submit">Sign in</button>
+    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    <button class="mode-switch" id="mode-switch" type="button">New to Ferrari? Create an account</button>
+    <p class="footnote">Your Ferrari journey starts here.</p>
+  </form>
+</main>
+<script>
+const APP_URL = '<?= webAppUrl ?>'.trim();
+const hasDeployedAppUrl = APP_URL && !APP_URL.includes('<?=') && !APP_URL.includes('?>');
+const hasAppsScriptRuntime = typeof google !== 'undefined' && google.script && google.script.run;
+if (hasDeployedAppUrl && hasAppsScriptRuntime) {
+  document.querySelectorAll('[data-app-page]').forEach((link) => {
+    link.href = APP_URL + '?page=' + link.dataset.appPage;
+  });
+}
+const form = document.getElementById('auth-form');
+const nameField = document.getElementById('name-field');
+const numberField = document.getElementById('number-field');
+const nameInput = document.getElementById('na');
+const phoneInput = document.getElementById('nu');
+const emailInput = document.getElementById('ma');
+const passwordInput = document.getElementById('pa');
+const submitButton = document.getElementById('submit-button');
+const modeSwitch = document.getElementById('mode-switch');
+const statusMessage = document.getElementById('form-status');
+const title = document.getElementById('form-title');
+const intro = document.getElementById('form-intro');
+let mode = 'login';
+
+function showStatus(message, offerDeployedLogin) {
+  statusMessage.replaceChildren(document.createTextNode(message));
+  if (offerDeployedLogin && hasDeployedAppUrl) {
+    const link = document.createElement('a');
+    link.href = APP_URL + '?page=login';
+    link.textContent = ' Open the deployed sign-in page';
+    link.style.cssText = 'display:inline-block;margin-top:6px;color:#fff;text-decoration:underline';
+    statusMessage.append(document.createElement('br'), link);
+  }
+}
+
+function setMode(nextMode) {
+  mode = nextMode;
+  const creatingAccount = mode === 'register';
+  nameField.hidden = !creatingAccount;
+  numberField.hidden = !creatingAccount;
+  nameInput.required = creatingAccount;
+  passwordInput.autocomplete = creatingAccount ? 'new-password' : 'current-password';
+  title.textContent = creatingAccount ? 'Create your account.' : 'Welcome back.';
+  intro.textContent = creatingAccount
+    ? 'Create your Ferrari account to stay close to the team, the cars and every moment on track.'
+    : 'Sign in to stay close to the team, the cars and every moment on track.';
+  submitButton.textContent = creatingAccount ? 'Create account' : 'Sign in';
+  modeSwitch.textContent = creatingAccount
+    ? 'Already have an account? Sign in'
+    : 'New to Ferrari? Create an account';
+  statusMessage.textContent = '';
+}
+
+modeSwitch.addEventListener('click', () => setMode(mode === 'login' ? 'register' : 'login'));
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (submitButton.disabled) return;
+  statusMessage.textContent = '';
+  if (!form.reportValidity()) return;
+  if (!hasDeployedAppUrl) {
+    showStatus('This page has no deployed Apps Script URL. Deploy the project as a web app, then open its /exec address to sign in.', false);
+    return;
+  }
+  if (!hasAppsScriptRuntime) {
+    showStatus('This page was opened outside the Apps Script web app, so sign-in is unavailable here.', true);
+    return;
+  }
+
+  const requestMode = mode;
+  submitButton.disabled = true;
+  modeSwitch.disabled = true;
+  submitButton.textContent = requestMode === 'register' ? 'Creating account…' : 'Signing in…';
+  const runner = google.script.run
+    .withSuccessHandler((result) => {
+      submitButton.disabled = false;
+      modeSwitch.disabled = false;
+      submitButton.textContent = requestMode === 'register' ? 'Create account' : 'Sign in';
+      if (!result || !result.ok) {
+        showStatus(result && result.message ? result.message : 'Unable to sign in. Try again.', false);
+        return;
+      }
+      try {
+        sessionStorage.setItem('ferrariAuthToken', result.token);
+      } catch (error) {
+        showStatus('Browser session storage is unavailable. Please open the deployed app in a regular browser tab and try again.', false);
+        return;
+      }
+      const homeUrl = APP_URL + '?page=home';
+      try {
+        window.top.location.assign(homeUrl);
+      } catch (navigationError) {
+        window.location.assign(homeUrl);
+      }
+    })
+    .withFailureHandler((error) => {
+      submitButton.disabled = false;
+      modeSwitch.disabled = false;
+      submitButton.textContent = requestMode === 'register' ? 'Create account' : 'Sign in';
+      showStatus('The account service could not be reached. Please try again.', false);
+    });
+
+  if (requestMode === 'register') {
+    runner.registerAccount({
+      name: nameInput.value,
+      phone: phoneInput.value,
+      email: emailInput.value,
+      password: passwordInput.value
+    });
+  } else {
+    runner.loginAccount(emailInput.value, passwordInput.value);
+  }
+});
+</script>
+</body>
+</html>

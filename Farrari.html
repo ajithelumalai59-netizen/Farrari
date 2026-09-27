@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base target="_top">
+    <title>Farrari in html</title>
+    <style>
+        /* ==============================
+   BASE STYLES (desktop)
+   ============================== */
+body{
+    margin: 0;
+    overflow-x: hidden; /* stops sideways scroll caused by 100vw */
+}
+
+/* ---------- Section 1 : Hero ---------- */
+.main1{
+    width: 100vw;
+    height: 120vh;
+    background-color: black;
+    position: relative;
+}
+.sub11{
+    width: 100vw;
+    height: 70vh;
+    position: absolute;
+}
+.sub11 img{
+    width: 100%;
+    height: 100%;
+}
+
+.main1:hover .sub12{
+    height: 75vh;
+    top: 25vh;
+}
+.sub13{
+    position: fixed;
+    left: 140vh;
+    font-size: 20px;
+    color: whitesmoke;
+}
+.sub13 td{
+    padding: 20px;
+}
+.sub14{
+    width: 100vw;
+    height: 30vh;
+    font-size: 120px;
+    font-family: 'Times New Roman', Times, serif;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    text-align: center;
+    position: absolute;
+    top: 20vh;
+    transition: all 2s ease;
+    
+}
+
+.sub15{
+    width: 6vw;
+    height: 15vh;
+    top: 4vh;
+    left: 2vh;
+    position: fixed;
+}
+.sub15 img{
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------- Section 2 : Video ---------- */
+.main2{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+video{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* ---------- Section 3 : Image grid ---------- */
+.main3{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.Box3 img{
+    width: 50vw;
+    height: 50vh;
+    object-fit: cover;
+    transition: all 1s ease;
+}
+.Box3{
+    width: 50vw;
+    height: 50vh;
+    overflow: hidden;
+}
+.Box3 img:hover{
+    transform: scale3d(1.2, 1.2, 1.8);
+}
+.sub31{
+    position: absolute;
+    top: 0vh;
+    left: 0vh;      /* fixed typo: was "ovh" */
+}
+.sub32{
+    position: absolute;
+    top: 0vh;
+    left: 50vw;
+}
+.sub33{
+    position: absolute;
+    top: 50vh;
+    left: 0vh;      /* fixed typo: was "ovh" */
+}
+.sub34{
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+}
+
+/* ---------- Section 4 : Footer ---------- */
+.main4{
+    position: relative;
+    width: 100vw;
+    height: 50vh;
+    background-color: black;
+}
+button{
+    position: absolute;
+    border: 2px black solid;
+    background-color: red;
+    border-radius: 10px;
+    width: 20vh;
+    height: 30px;
+    top: 10vh;
+    left: 45vw;
+}
+button:hover{
+    background-color: black;
+    color: whitesmoke;
+    border: 2px white solid;
+}
+p{
+    position: absolute;
+    top: 25vh;
+    color: whitesmoke;
+}
+h4{
+    position: absolute;
+    top: 42vh;
+    color: white;
+    left: 44.5vw;
+}
+
+
+/* =====================================================
+   MEDIA QUERIES  (big screen  ->  small screen)
+   ===================================================== */
+
+/* ---- 4K / very big monitors ---- */
+@media (min-width: 2200px){
+    .sub13{ font-size: 32px; }
+    .sub14{ font-size: 240px; }
+    button{ height: 48px; font-size: 22px; }
+    p{ font-size: 24px; }
+    h4{ font-size: 26px; }
+}
+
+/* ---- Big desktop (Full HD and above) ---- */
+@media (min-width: 1600px) and (max-width: 2199px){
+    .sub13{ font-size: 24px; }
+    .sub14{ font-size: 170px; }
+}
+
+/* ---- Laptop (up to 1440px) ---- */
+/* The menu was fixed at left:140vh, so it went outside the screen on laptops.
+   Now it sticks to the right side. */
+@media (max-width: 1440px){
+    .sub13{
+        left: auto;
+        right: 2vw;
+        font-size: 18px;
+    }
+    .sub13 td{ padding: 16px; }
+    .sub14{ font-size: 110px; }
+}
+
+/* ---- Small laptop / big tablet landscape (up to 1200px) ---- */
+@media (max-width: 1200px){
+    .sub14{ font-size: 90px; }
+    .sub13{ font-size: 17px; }
+    .sub13 td{ padding: 14px; }
+}
+
+/* ---- Tablet (up to 992px) ---- */
+@media (max-width: 992px){
+    .sub13{ font-size: 16px; }
+    .sub13 td{ padding: 12px; }
+
+    .sub14{
+        font-size: 72px;
+        top: 18vh;
+    }
+
+    .sub15{
+        width: 9vw;
+        min-width: 55px;
+    }
+    .sub15 img{ object-fit: contain; }
+
+    /* Footer: change to normal flow, so long text never goes outside */
+    .main4{
+        height: auto;
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 40px 6vw;
+        box-sizing: border-box;
+    }
+    button{
+        position: static;
+        width: auto;
+        min-width: 140px;
+        height: 40px;
+        padding: 0 24px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    p{
+        position: static;
+        margin: 0;
+        line-height: 1.6;
+        font-size: 16px;
+    }
+    h4{
+        position: static;
+        margin: 0;
+    }
+}
+
+/* ---- Tablet portrait / big phone (up to 768px) ---- */
+@media (max-width: 768px){
+    .sub13{ font-size: 15px; }
+    .sub13 td{ padding: 10px; }
+
+    .sub14{
+        font-size: 56px;
+        top: 20vh;
+    }
+
+    .sub15{
+        width: 12vw;
+        height: 10vh;
+        top: 2vh;
+        left: 2vw;
+    }
+}
+
+/* ---- Phone (up to 576px) ---- */
+@media (max-width: 576px){
+    .sub13{
+        right: 1vw;
+        font-size: 13px;
+    }
+    .sub13 td{ padding: 8px 6px; }
+
+    .sub14{
+        font-size: 34px;
+        top: 22vh;
+    }
+
+    .sub15{
+        width: 14vw;
+        height: 8vh;
+    }
+
+    /* video a little shorter on phone */
+    .main2,
+    video{
+        height: 60vh;
+    }
+
+    /* image grid: one image in each row */
+    .main3{
+        height: auto;
+    }
+    .sub31,
+    .sub32,
+    .sub33,
+    .sub34{
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+    .Box3{
+        width: 100vw;
+        height: 32vh;
+    }
+    .Box3 img{
+        width: 100%;
+        height: 100%;
+    }
+
+    p{
+        font-size: 15px;
+        text-align: center;
+    }
+}
+
+/* ---- Small phone (up to 400px) ---- */
+@media (max-width: 400px){
+    .sub13{ font-size: 12px; }
+    .sub13 td{ padding: 6px 4px; }
+
+    .sub14{ font-size: 28px; }
+
+    .sub15{
+        width: 15vw;
+        height: 7vh;
+    }
+
+    p{ font-size: 14px; }
+}
+
+/* ---- Phone in landscape (screen is wide but not tall) ---- */
+@media (orientation: landscape) and (max-height: 500px){
+    .sub13{ font-size: 14px; }
+    .sub13 td{ padding: 6px 10px; }
+
+    .sub14{
+        font-size: 16vh;
+        top: 18vh;
+    }
+
+    .sub15{
+        width: 8vw;
+        height: 14vh;
+    }
+}
+
+/* Ferrari visual refresh */
+:root{color-scheme:dark;--ferrari-red:#e51b2b;--glass:rgba(12,14,18,.48)}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#08090b;color:#fff}
+.main1{height:min(900px,100svh);min-height:650px;overflow:hidden;isolation:isolate}
+.main1:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.52),transparent 30%,rgba(0,0,0,.1) 60%,rgba(0,0,0,.78));}
+.sub11 img,.sub12 img{object-fit:cover}
+.sub11 img{filter:brightness(.75) saturate(1.08)}
+.sub12 img{filter:brightness(.82) saturate(1.12)}
+.sub13{z-index:3;top:24px;left:auto;right:4vw;padding:4px 10px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(8,9,12,.32);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.sub13 td{padding:10px 15px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.sub13 td a{transition:color .2s ease}.sub13 td:hover,.sub13 td:hover a{color:#ff6670!important}
+.sub14{z-index:2;top:24vh;font-size:clamp(56px,12vw,160px);font-weight:700;letter-spacing:.14em;text-shadow:0 8px 38px rgba(0,0,0,.52)}
+.sub15{z-index:3;width:58px;height:70px;top:22px;left:3vw;filter:drop-shadow(0 5px 14px rgba(0,0,0,.45))}
+.main2{overflow:hidden;background:#050505}.main2 video{display:block;filter:brightness(.78)}
+.main3{background:#090a0c;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:3px;padding:3px;box-sizing:border-box}
+.Box3,.Box3 img{width:100%;height:100%}.Box3{position:relative;inset:auto!important}.Box3:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 35%,rgba(0,0,0,.28));opacity:.7}.Box3 img{transition:transform .7s cubic-bezier(.2,.7,.2,1);filter:saturate(1.08)}.Box3:hover img{transform:scale(1.055)}
+.main4{height:auto;min-height:300px;padding:42px 8vw;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;border-top:1px solid rgba(255,255,255,.12);background:radial-gradient(ellipse at 50% 0,rgba(170,10,24,.2),transparent 55%),#08090b}
+.main4 button{position:static;width:auto;height:auto;padding:14px 28px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:var(--ferrari-red);color:white;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.main4 button:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(229,27,43,.35);background:#ff2638;border-color:white}
+.main4 p{position:static;max-width:900px;margin:0;color:rgba(255,255,255,.72);font-size:15px;line-height:1.8;text-align:center}
+.main4 h4{position:static;margin:0;color:rgba(255,255,255,.9);font-size:13px;letter-spacing:.12em}
+@media(max-width:768px){.main1{min-height:580px;height:82svh}.sub13{top:92px;right:3vw;left:3vw;display:flex;justify-content:center;padding:1px 4px}.sub13 table{width:100%;table-layout:fixed}.sub13 td{padding:11px 3px;font-size:10px;letter-spacing:.08em;text-align:center}.sub14{top:28vh;letter-spacing:.09em}.main3{height:auto;grid-template-columns:1fr;grid-template-rows:none}.Box3{height:34vh;min-height:220px}.main2,video{height:65vh}.main4{padding:38px 7vw}.sub15{width:48px;height:58px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Refined image crop and lightweight glass video frame */
+.sub12{height:50vh;overflow:hidden}
+.sub12 img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 54%}
+.main2{height:82vh;min-height:460px;display:grid;place-items:center;padding:5vh 5vw;box-sizing:border-box;background:radial-gradient(ellipse at 50% 45%,rgba(255,255,255,.09),transparent 62%),linear-gradient(145deg,#101115,#060709);overflow:hidden}
+.main2:before{content:"";position:absolute;inset:4vh 4vw;border:1px solid rgba(255,255,255,.15);border-radius:28px;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.015));box-shadow:0 20px 60px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);pointer-events:none}
+.main2 video{position:relative;z-index:1;width:min(88vw,1500px);height:70vh;max-height:740px;border:1px solid rgba(255,255,255,.25);border-radius:21px;object-fit:cover;box-shadow:0 14px 40px rgba(0,0,0,.32);filter:brightness(.82) saturate(.92)}
+.main2 .sub15{position:absolute;z-index:2;top:7vh;left:7vw;width:42px;height:52px;opacity:.85}
+@media(max-width:768px){.sub12{height:40vh}.sub12 img{object-position:center}.main2{height:64vh;min-height:380px;padding:4vh 4vw}.main2:before{inset:3vh 3vw;border-radius:20px}.main2 video{width:88vw;height:54vh;border-radius:15px}.main2 .sub15{top:5vh;left:7vw;width:34px;height:42px}}
+
+/* Remove the oversized pale panel; keep the video frame subtle. */
+.main2:before{display:none}
+.main2 video{border-color:rgba(255,255,255,.16);box-shadow:0 12px 34px rgba(0,0,0,.26)}
+/* Editorial gallery cards */
+.main3{height:auto;min-height:100vh;grid-template-rows:auto repeat(2,minmax(34vh,1fr));gap:14px;padding:clamp(22px,5vw,76px);background:radial-gradient(ellipse at 50% 0,rgba(160,15,28,.16),transparent 55%),#090a0c}
+.gallery-heading{grid-column:1/-1;padding:4px 0 18px}
+.gallery-heading .gallery-eyebrow{position:static;margin:0 0 12px;color:#f06a73;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.gallery-heading h2{margin:0;color:#fff;font:700 clamp(32px,5.4vw,66px)/1.04 Georgia,'Times New Roman',serif;letter-spacing:-.035em}
+.gallery-heading>span{display:block;margin-top:12px;color:rgba(255,255,255,.62);font-size:14px;line-height:1.6}
+.Box3{min-width:0;min-height:280px;border:1px solid rgba(255,255,255,.13);border-radius:20px;background:#151519;box-shadow:0 14px 35px rgba(0,0,0,.28);isolation:isolate}
+.Box3 img{display:block;object-fit:cover;transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .5s;filter:saturate(.93) brightness(.83)}
+.Box3:after{z-index:1;opacity:1;background:linear-gradient(180deg,rgba(0,0,0,.02) 30%,rgba(0,0,0,.22) 55%,rgba(0,0,0,.78) 100%)}
+.Box3:hover img{transform:scale(1.045);filter:saturate(1.08) brightness(.92)}
+.gallery-caption{position:absolute;z-index:2;left:16px;right:16px;bottom:16px;min-height:100px;padding:16px 52px 15px 18px;border:1px solid rgba(255,255,255,.22);border-radius:15px;background:rgba(14,15,18,.48);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 8px 24px rgba(0,0,0,.18);transition:background .25s,border-color .25s,transform .25s}
+.Box3:hover .gallery-caption{transform:translateY(-3px);background:rgba(14,15,18,.64);border-color:rgba(255,255,255,.38)}
+.gallery-index{display:block;margin-bottom:7px;color:#ff7b84;font-size:9px;font-weight:700;letter-spacing:.18em}
+.gallery-caption h3{margin:0;color:#fff;font:600 21px/1.2 Georgia,'Times New Roman',serif}
+.gallery-caption p{position:static;margin:5px 0 0;color:rgba(255,255,255,.72);font-size:12px;line-height:1.4}
+.gallery-arrow{position:absolute;right:15px;top:50%;display:grid;place-items:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.35);border-radius:50%;color:#fff;font-size:17px;transform:translateY(-50%);transition:background .2s,border .2s}
+.Box3:hover .gallery-arrow{background:#d7192d;border-color:#d7192d}
+@media(max-width:768px){.main3{grid-template-columns:1fr;grid-template-rows:auto;gap:12px;padding:48px 5vw}.gallery-heading{padding-bottom:8px}.Box3{height:35vh;min-height:250px}.gallery-caption{left:12px;right:12px;bottom:12px;padding:14px 48px 13px 15px;min-height:90px}}
+@media(prefers-reduced-motion:reduce){.Box3 img,.gallery-caption,.gallery-arrow{transition:none}}
+
+/* Eliminate the empty hero gap shown in the page preview */
+.main1{height:100vh;height:100svh;min-height:0;background:#08090b;overflow:hidden}
+.main1 .sub11{inset:0;width:100%;height:100%}
+.main1 .sub11 img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.main1 .sub12{top:auto;bottom:0;width:100%;height:24%;overflow:hidden}
+.main1 .sub12 img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 54%}
+.main1:hover .sub12{top:auto;height:58%}
+@media(max-width:768px){.main1{height:82svh;min-height:480px}.main1 .sub12{height:20%}.main1:hover .sub12{height:42%}}
+
+/* Hero wordmark layout */
+.main1 .sub14{top:69%;left:0;width:100%;height:auto;padding:0 3vw;box-sizing:border-box;color:rgba(255,255,255,.96);font-family:Georgia,'Times New Roman',serif;font-size:clamp(48px,11.5vw,154px);font-weight:700;line-height:1;letter-spacing:.13em;text-align:center;text-shadow:0 10px 38px rgba(0,0,0,.68),0 1px 0 rgba(255,255,255,.35);z-index:2;pointer-events:none;transition:top .65s ease,font-size .65s ease,letter-spacing .65s ease}
+.main1:hover .sub14{top:66%;font-size:clamp(48px,10.5vw,140px);letter-spacing:.16em}
+@media(max-width:768px){.main1 .sub14{top:66%;padding:0 5vw;font-size:clamp(38px,12vw,82px);letter-spacing:.08em}.main1:hover .sub14{top:66%;font-size:clamp(38px,12vw,82px);letter-spacing:.08em}}
+@media(max-width:420px){.main1 .sub14{font-size:clamp(32px,10vw,48px);letter-spacing:.035em}.main1:hover .sub14{font-size:clamp(32px,10vw,48px);letter-spacing:.035em}}
+
+/* Refined Ferrari wordmark */
+.main1 .sub14{transform:translateY(50px);font-family:Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:.19em;color:#f7f5f1;text-shadow:0 3px 0 rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.62),0 0 22px rgba(255,255,255,.12)}
+.main1 .sub14:before{content:none;display:block;margin:0 0 13px;color:rgba(255,255,255,.68);font:700 clamp(9px,1vw,12px)/1 Arial,Helvetica,sans-serif;letter-spacing:.34em;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.main1 .sub14:after{content:"";display:block;width:clamp(54px,7vw,92px);height:2px;margin:17px auto 0;border-radius:99px;background:linear-gradient(90deg,transparent,#e51b2b,transparent);box-shadow:0 0 14px rgba(229,27,43,.55)}
+@media(max-width:768px){.main1 .sub14{letter-spacing:.1em}.main1 .sub14:before{margin-bottom:10px;letter-spacing:.23em}.main1 .sub14:after{margin-top:13px}}
+@media(max-width:420px){.main1 .sub14{letter-spacing:.05em}.main1 .sub14:before{font-size:8px;letter-spacing:.16em}}
+
+/* Gentle automatic video-frame zoom */
+.main2 video{transform:scale(.95);animation:videoFrameBreath 7s ease-in-out infinite alternate;transform-origin:center}
+@keyframes videoFrameBreath{from{transform:scale(.95)}to{transform:scale(1.035)}}
+@media(prefers-reduced-motion:reduce){.main2 video{animation:none;transform:none}}
+
+/* Responsive layout refinements */
+@media (min-width: 1441px){
+  .main1{max-height:1100px}
+  .sub13{right:5vw}
+  .main2 video{width:min(86vw,1600px)}
+  .main3{padding:72px max(6vw,calc((100vw - 1600px)/2));gap:18px}
+}
+@media (min-width:601px) and (max-width:900px){
+  .main1{height:90svh;min-height:560px}
+  .main1 .sub14,.main1:hover .sub14{top:65%;font-size:clamp(54px,10vw,92px)}
+  .sub13{top:92px;right:3vw}
+  .sub13 td{padding:10px 9px;font-size:12px}
+  .main2{height:70svh;min-height:430px;padding:30px 4vw}
+  .main2 video{width:90vw;height:58svh;max-height:620px}
+  .main3{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto repeat(2,minmax(30vh,1fr));padding:44px 4vw;gap:12px}
+  .Box3{min-height:250px}
+  .gallery-caption{left:12px;right:12px;bottom:12px;padding:13px 45px 12px 14px}
+}
+@media (max-width:600px){
+  body{overflow-x:hidden}
+  .main1{height:88svh;min-height:520px}
+  .main1 .sub14,.main1:hover .sub14{top:64%;padding-inline:4vw;font-size:clamp(34px,10vw,60px);letter-spacing:.045em}
+  .main1 .sub14:after{margin-top:12px}
+  .sub13{top:82px;right:3vw;left:3vw;width:auto}
+  .sub13 table{width:100%;table-layout:fixed}
+  .sub13 td{padding:10px 2px;font-size:clamp(9px,2.7vw,11px);letter-spacing:.04em;white-space:nowrap}
+  .sub15{top:16px;left:4vw;width:42px;height:50px}
+  .main2{height:58svh;min-height:340px;padding:24px 4vw}
+  .main2 video{width:92vw;height:48svh;min-height:280px;max-height:460px;border-radius:14px}
+  .main2 .sub15{top:5vh;left:7vw;width:30px;height:36px}
+  .main3{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;padding:42px 4vw;gap:11px}
+  .gallery-heading{padding:0 2px 8px}
+  .gallery-heading h2{font-size:clamp(32px,9vw,46px)}
+  .gallery-heading>span{font-size:13px}
+  .Box3{height:34svh;min-height:230px;max-height:360px;border-radius:16px}
+  .gallery-caption{left:10px;right:10px;bottom:10px;min-height:86px;padding:12px 43px 11px 13px;border-radius:12px}
+  .gallery-caption h3{font-size:19px}
+  .gallery-caption p{font-size:11px}
+  .gallery-arrow{right:11px;width:29px;height:29px}
+  .main4{padding:34px 6vw;gap:18px}
+  .main4 p{font-size:14px;line-height:1.7}
+}
+@media (max-width:360px){
+  .main1{min-height:480px}
+  .main1 .sub14,.main1:hover .sub14{font-size:32px;letter-spacing:.015em}
+  .sub13 td{font-size:9px;padding-inline:1px}
+  .main2 video{width:94vw}
+  .gallery-caption h3{font-size:17px}
+}
+@media (orientation:landscape) and (max-height:500px){
+  .main1{height:100svh;min-height:340px}
+  .main1 .sub14,.main1:hover .sub14{top:61%;font-size:clamp(34px,8vw,76px)}
+  .sub13{top:10px;right:3vw}
+  .sub13 td{padding:6px 10px}
+  .sub15{top:10px;width:34px;height:40px}
+  .main2{height:100svh;min-height:340px;padding:18px 4vw}
+  .main2 video{height:82svh;width:min(88vw,1300px)}
+  .main3{grid-template-rows:auto repeat(2,minmax(38vh,1fr))}
+}
+
+/* Final viewport-fit adjustments */
+img,video{max-width:100%}
+@media (min-width:901px) and (max-width:1365px){
+  .main1{height:min(94svh,900px);min-height:600px}
+  .sub13{top:22px;right:3vw;padding:3px 8px}
+  .sub13 td{padding:9px clamp(8px,1.1vw,14px);font-size:clamp(11px,1.1vw,14px)}
+  .main1 .sub14,.main1:hover .sub14{top:65%;font-size:clamp(66px,9vw,120px)}
+  .main2{height:76svh;min-height:480px;padding:4svh 4vw}
+  .main2 video{width:90vw;height:66svh;max-height:680px}
+  .main3{min-height:92svh;padding:54px 5vw;gap:14px;grid-template-rows:auto repeat(2,minmax(30svh,1fr))}
+  .Box3{min-height:270px}
+}
+@media (min-width:601px) and (max-width:900px) and (orientation:portrait){
+  .main1{height:84svh;min-height:580px}
+  .main1 .sub14,.main1:hover .sub14{top:64%;font-size:clamp(58px,10vw,90px)}
+  .main2{height:66svh;min-height:430px}
+  .main2 video{height:56svh;min-height:350px}
+  .main3{padding:42px 4vw}
+}
+@media (max-width:600px) and (orientation:landscape){
+  .main1{height:100svh;min-height:350px}
+  .main1 .sub14,.main1:hover .sub14{top:62%;font-size:clamp(30px,7vw,52px)}
+  .sub13{top:10px;left:64px;right:2vw;width:auto}
+  .sub13 td{padding:7px 5px;font-size:10px}
+  .sub15{top:8px;width:34px;height:40px}
+  .main2{height:100svh;min-height:340px}
+  .main2 video{height:78svh;min-height:260px}
+  .main3{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto repeat(2,minmax(40vh,1fr))}
+  .Box3{height:42vh;min-height:210px}
+}
+
+/* Ferrari mouse cursor accent (mouse and trackpad only) */
+.ferrari-cursor{position:fixed;z-index:9999;top:0;left:0;width:34px;height:34px;border:1px solid rgba(255,45,61,.9);border-radius:50%;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.8);transition:opacity .2s ease,transform .2s ease,border-color .2s ease,background .2s ease;mix-blend-mode:screen}
+.ferrari-cursor:after{content:"";position:absolute;left:50%;top:50%;width:4px;height:4px;border-radius:50%;background:#ff2638;transform:translate(-50%,-50%);box-shadow:0 0 9px rgba(255,38,56,.9)}
+.ferrari-cursor.is-visible{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.ferrari-cursor.is-hover{transform:translate(-50%,-50%) scale(1.45);border-color:#fff;background:rgba(229,27,43,.13)}
+@media (hover:hover) and (pointer:fine){body{cursor:none}a,button,input,video{cursor:none}.ferrari-cursor{display:block}}
+@media (hover:none),(prefers-reduced-motion:reduce){.ferrari-cursor{display:none!important}body,a,button,input,video{cursor:auto}}
+.ferrari-cursor-trail{position:fixed;z-index:9998;top:0;left:0;width:54px;height:54px;border:1px solid rgba(255,60,73,.34);border-radius:50%;pointer-events:none;opacity:0;transform:translate(-50%,-50%);transition:opacity .25s ease,width .3s ease,height .3s ease,border-color .3s ease}
+.ferrari-cursor-trail.is-visible{opacity:1}
+.ferrari-cursor-trail.is-hover{width:68px;height:68px;border-color:rgba(255,255,255,.42)}
+@media (hover:hover) and (pointer:fine){.ferrari-cursor-trail{display:block}}
+@media (hover:none),(prefers-reduced-motion:reduce){.ferrari-cursor-trail{display:none!important}}
+
+.login-details{position:fixed;z-index:1001;top:112px;right:3vw;max-width:min(360px,90vw);padding:10px 14px;border:1px solid rgba(255,255,255,.3);border-radius:12px;background:rgba(8,8,10,.78);backdrop-filter:blur(12px);color:#fff;font:12px/1.5 Arial,Helvetica,sans-serif;box-shadow:0 8px 26px rgba(0,0,0,.3)}
+.login-details strong{color:#ff9da3}
+.login-details .sign-out{margin:7px 0 0;padding:5px 9px;border:1px solid rgba(255,255,255,.32);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:600 10px Arial,Helvetica,sans-serif;cursor:pointer}
+.login-details .sign-out:hover{background:#a90d1b}
+@media(max-width:600px){.login-details{top:136px;left:3vw;right:3vw;max-width:none;text-align:center}}
+
+/* Keep the primary navigation available while scrolling */
+.sub13{position:fixed;z-index:1000;top:18px;right:3vw;left:auto;transform:translateY(40px)}
+@media(max-width:600px){.sub13{position:fixed;top:78px;left:3vw;right:3vw;width:auto}}
+@media(max-width:600px) and (orientation:landscape){.sub13{top:8px;left:64px;right:2vw}}
+@keyframes sub14ColorSweep{0%,100%{background-position:100% 0}42%,62%{background-position:0% 0}}
+.main1 .sub14{color:#f7f5f1;background-image:linear-gradient(105deg,#f7f5f1 0%,#f7f5f1 43%,#ff5964 49%,#fff 52%,#f7f5f1 58%,#f7f5f1 100%);background-size:280% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;animation:sub14ColorSweep 7s ease-in-out infinite}
+@supports (-webkit-background-clip:text){.main1 .sub14{-webkit-text-fill-color:transparent}}
+@media(prefers-reduced-motion:reduce){.main1 .sub14{animation:none!important;background-image:none!important;background-clip:border-box;-webkit-background-clip:border-box;-webkit-text-fill-color:#f7f5f1!important;color:#f7f5f1!important}}
+@keyframes sub13ColorPulse{0%,72%,100%{color:#fff}42%,52%{color:#ff7b84}}
+.sub13 td a{animation:sub13ColorPulse 5.2s ease-in-out infinite}
+.sub13 td:nth-child(2) a{animation-delay:.65s}
+.sub13 td:nth-child(3) a{animation-delay:1.3s}
+.sub13 td:nth-child(4) a{animation-delay:1.95s}
+.sub13 td:nth-child(5) a{animation-delay:2.6s}
+@media(prefers-reduced-motion:reduce){.sub13 td a{animation:none!important;color:#fff!important}}
+
+/* Layered, pointer-reactive 3D-style car showcase */
+.main1 .sub11{perspective:1200px;transform-style:preserve-3d;isolation:isolate;overflow:hidden}
+.main1 .sub11::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at var(--light-x,50%) var(--light-y,45%),rgba(255,255,255,.2),transparent 34%),linear-gradient(180deg,rgba(3,6,12,.08),transparent 50%,rgba(3,6,12,.25));mix-blend-mode:screen;opacity:.58;transform:translateZ(28px);transition:background-position .15s ease}
+.main1 .sub11 img{transform-origin:54% 58%;transform-style:preserve-3d;backface-visibility:hidden;will-change:transform,filter;animation:heroCarOrbit 6s cubic-bezier(.45,0,.55,1) infinite alternate}
+@keyframes heroCarOrbit{
+  0%{transform:perspective(1500px) translate3d(-.65%,0,0) rotateX(var(--car-tilt-x,0deg)) rotateY(calc(var(--car-tilt-y,0deg) - 4deg)) rotateZ(-.12deg) scale(1.07);filter:brightness(.74) saturate(1.04)}
+  50%{transform:perspective(1500px) translate3d(0,-.35%,0) rotateX(var(--car-tilt-x,0deg)) rotateY(var(--car-tilt-y,0deg)) rotateZ(0) scale(1.10);filter:brightness(.82) saturate(1.08)}
+  100%{transform:perspective(1500px) translate3d(.65%,0,0) rotateX(var(--car-tilt-x,0deg)) rotateY(calc(var(--car-tilt-y,0deg) + 4deg)) rotateZ(.12deg) scale(1.07);filter:brightness(.76) saturate(1.1)}
+}
+@media(max-width:768px){.main1 .sub11 img{animation:heroCarOrbitMobile 8s cubic-bezier(.45,0,.55,1) infinite alternate}.main1 .sub11::after{opacity:.38}}
+@keyframes heroCarOrbitMobile{
+  0%{transform:perspective(1500px) translate3d(-.35%,0,0) rotateY(-2deg) scale(1.045);filter:brightness(.74) saturate(1.04)}
+  50%{transform:perspective(1500px) translate3d(0,-.2%,0) rotateY(0) scale(1.07);filter:brightness(.82) saturate(1.08)}
+  100%{transform:perspective(1500px) translate3d(.35%,0,0) rotateY(2deg) scale(1.045);filter:brightness(.76) saturate(1.1)}
+}
+@media(prefers-reduced-motion:reduce){.main1 .sub11 img{animation:none;transform:none;will-change:auto}.main1 .sub11::after{transition:none}}
+/* Compact portrait layout: 320px–360px phones */
+@media (min-width:320px) and (max-width:360px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .main1{width:100%;height:88svh;min-height:460px;max-height:660px}
+  .main1 .sub11{width:100%;height:100%}
+  .main1 .sub11 img{object-position:54% center}
+  .sub13{top:66px!important;left:8px!important;right:8px!important;width:auto!important;padding:1px 3px!important;transform:none!important}
+  .sub13 table{width:100%;table-layout:fixed}
+  .sub13 td{width:20%;padding:9px 0!important;font-size:clamp(8px,2.7vw,9.5px)!important;letter-spacing:0!important;white-space:nowrap;text-align:center}
+  .sub13 td a{display:block;overflow:hidden;text-overflow:clip}
+  .sub15{top:10px!important;left:10px!important;width:34px!important;height:42px!important}
+  .main1 .sub14,.main1:hover .sub14{top:64%!important;width:100%;padding-inline:8px!important;font-size:clamp(29px,9vw,32px)!important;letter-spacing:.02em!important;white-space:nowrap}
+  .login-details{top:116px!important;left:8px!important;right:8px!important;width:auto;max-width:none;padding:8px 10px;font-size:11px;text-align:center}
+  .main2{width:100%;min-width:0;padding:20px 12px}
+  .main2 video{display:block;width:100%!important;max-width:100%;height:48svh;min-height:250px;max-height:380px;margin:0 auto}
+  .main3{width:100%;min-width:0;grid-template-columns:minmax(0,1fr);padding:34px 12px;gap:10px}
+  .Box3{width:100%;min-width:0;height:32svh;min-height:210px;max-height:300px}
+  .gallery-caption{left:8px;right:8px;bottom:8px;padding:10px 40px 10px 11px;min-height:78px}
+  .gallery-caption h3{font-size:16px}
+  .gallery-caption p{font-size:10px;line-height:1.4}
+  .main4{width:100%;padding:30px 16px;gap:14px}
+  .main4 p{font-size:13px;line-height:1.65;overflow-wrap:anywhere}
+}
+</style>
+    <link rel="icon" href="https://www.edigitalagency.com.au/wp-content/uploads/Ferrari-logo-png-large-icon-badge.png">
+</head>
+<body>
+<div class="sub13">
+            <table>
+                <tr>
+                    <td id="s1"><a href="Farrari.html" data-app-page="home" style="color:white;text-decoration:none;">Home</a></td>
+                    <td id="s2"><a href="#video" style="color:white;text-decoration:none;">Video</a></td>
+                    <td id="s3"><a href="#products" style="color:white;text-decoration:none;">Product</a></td>
+                    <td id="s4"><a href="#about" style="color:white;text-decoration:none;">About</a></td>
+                    <td id="s5"><a href="Login.html" data-app-page="login" style="color:white;text-decoration:none;">Login</a></td>
+                </tr>
+            </table>
+
+        </div>
+
+
+    <aside class="login-details" id="login-details" aria-live="polite" hidden></aside>
+
+<div class="main1">
+
+        <div class="sub11">
+            <img src="https://www.evoindia.com/evoindia/2024-10-17/l4gkuryq/514c453f-bdd2-4068-b88f-7d0fa4579290.jpg" alt="car">
+
+        </div>
+        
+        
+        <div class="sub14">
+            FARRARI
+
+        </div>
+        <div class="sub15">
+            <img src="https://www.edigitalagency.com.au/wp-content/uploads/Ferrari-logo-png-large-icon-badge.png" alt="logo">
+        </div>
+
+
+    </div>
+    
+
+    <div class="main2" id="video">
+        <video src="https://www.pexels.com/download/video/29498800/" loop muted autoplay playsinline preload="metadata" disablepictureinpicture disableremoteplayback controlslist="nodownload noplaybackrate noremoteplayback">
+            
+        </video>
+         
+
+    </div>
+
+
+
+    <div class="main3" id="products">
+        <div class="gallery-heading"><p class="gallery-eyebrow">Scuderia Ferrari · Since 1929</p><h2>Made for the moment.</h2><span>Explore the details that make every Ferrari unforgettable.</span></div>
+        <div class="Box3 sub31">
+            <img src="https://t3.ftcdn.net/jpg/04/82/25/08/360_F_482250830_PBoZWxf124l2kZVVBStgj78xbSivxH2i.jpg" alt="car">
+
+        <div class="gallery-caption"><span class="gallery-index">01 / DESIGN</span><h3>Form in motion</h3><p>Every line is shaped by performance.</p><span class="gallery-arrow" aria-hidden="true">↗</span></div></div>
+         <div class="Box3 sub32">
+            <img src="https://static.independent.co.uk/2023/02/14/11/Screen%20Shot%202023-02-14%20at%2011.33.25.png?width=1200&height=630&fit=crop" alt="car">
+
+        <div class="gallery-caption"><span class="gallery-index">02 / ENGINEERING</span><h3>Built to respond</h3><p>Precision engineered for the road.</p><span class="gallery-arrow" aria-hidden="true">↗</span></div></div>
+         <div class="Box3 sub33">
+            <img src="https://www.shutterstock.com/shutterstock/photos/2643679359/display_1500/stock-photo-front-view-of-a-sleek-red-hypercar-with-aerodynamic-curves-inspired-by-ferrari-laferrari-glossy-2643679359.jpg" alt="car">
+
+        <div class="gallery-caption"><span class="gallery-index">03 / PERFORMANCE</span><h3>Born for speed</h3><p>Racing spirit in every detail.</p><span class="gallery-arrow" aria-hidden="true">↗</span></div></div>
+         <div class="Box3 sub34">
+            <img src="https://wallpapercat.com/w/full/4/7/5/4348-3840x2160-desktop-4k-ferrari-wallpaper-photo.jpg" alt="car">
+
+        <div class="gallery-caption"><span class="gallery-index">04 / CRAFT</span><h3>Made by passion</h3><p>Italian craftsmanship, unmistakable.</p><span class="gallery-arrow" aria-hidden="true">↗</span></div></div>
+         <div class="sub15">
+            <img src="https://www.edigitalagency.com.au/wp-content/uploads/Ferrari-logo-png-large-icon-badge.png" alt="logo">
+        </div>
+
+    </div>
+
+
+    <div class="main4" id="about">
+        <a href="https://www.ferrari.com/en-IN">
+        <button>
+            Explore Ferrarie
+        </button></a>
+        
+        <p style="text-align: center;">Throughout its history, the company has been noted for its continued participation in racing, especially in Formula One, where its team, Scuderia Ferrari, is the series' single oldest and most successful. Scuderia Ferrari has raced since 1929, first in Grand Prix events and later in Formula One, where it holds many records. Historically, Ferrari was also highly active in sports car racing, where its cars took many wins in races such as the Mille Miglia, Targa Florio and 24 Hours of Le Mans, as well as several overall victories in the World Sportscar Championship. Scuderia Ferrari fans, commonly called tifosi, are known for their passion and loyalty to the team. </p>
+
+        <h4>Farrari@gmail.com</h4>
+        
+
+
+    </div><div class="ferrari-cursor-trail" aria-hidden="true"></div>
+<div class="ferrari-cursor" aria-hidden="true"></div>
+<script>
+const APP_URL = '<?= webAppUrl ?>';
+if (APP_URL && typeof google !== 'undefined' && google.script && google.script.run) {
+  document.querySelectorAll('[data-app-page]').forEach((link) => {
+    link.href = APP_URL + '?page=' + link.dataset.appPage;
+  });
+}
+const details = document.getElementById('login-details');
+try {
+  const authToken = sessionStorage.getItem('ferrariAuthToken');
+  if (authToken && typeof google !== 'undefined' && google.script && google.script.run) {
+    google.script.run.withSuccessHandler((profile) => {
+      if (!profile) {
+        sessionStorage.removeItem('ferrariAuthToken');
+        return;
+      }
+      const heading = document.createElement('strong');
+      heading.textContent = 'Signed in as ' + profile.name;
+      const contact = document.createElement('div');
+      contact.textContent = [profile.email, profile.phone].filter(Boolean).join(' · ');
+      const signOut = document.createElement('button');
+      signOut.className = 'sign-out';
+      signOut.type = 'button';
+      signOut.textContent = 'Sign out';
+      signOut.addEventListener('click', () => {
+        signOut.disabled = true;
+        google.script.run.withSuccessHandler(() => {
+          sessionStorage.removeItem('ferrariAuthToken');
+          details.hidden = true;
+        }).withFailureHandler(() => {
+          signOut.disabled = false;
+        }).logoutAccount(authToken);
+      });
+      details.replaceChildren(heading, contact, signOut);
+      details.hidden = false;
+    }).withFailureHandler(() => {
+      details.hidden = true;
+    }).getSignedInProfile(authToken);
+  }
+} catch (error) {
+  details.hidden = true;
+};
+(() => {
+  const cursor = document.querySelector('.ferrari-cursor');
+  const trail = document.querySelector('.ferrari-cursor-trail');
+  const mouseMode = matchMedia('(hover: hover) and (pointer: fine)');
+  if (!cursor || !trail || !mouseMode.matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let x = 0, y = 0, trailX = 0, trailY = 0, visible = false;
+  document.addEventListener('pointermove', (event) => {
+    x = event.clientX;
+    y = event.clientY;
+    cursor.style.left = `${x}px`;
+    cursor.style.top = `${y}px`;
+    if (!visible) {
+      trailX = x;
+      trailY = y;
+      visible = true;
+      cursor.classList.add('is-visible');
+      trail.classList.add('is-visible');
+    }
+  }, { passive: true });
+  const follow = () => {
+    trailX += (x - trailX) * 0.14;
+    trailY += (y - trailY) * 0.14;
+    trail.style.transform = `translate3d(${trailX}px, ${trailY}px, 0) translate(-50%, -50%)`;
+    requestAnimationFrame(follow);
+  };
+  requestAnimationFrame(follow);
+  document.addEventListener('pointerleave', () => {
+    visible = false;
+    cursor.classList.remove('is-visible', 'is-hover');
+    trail.classList.remove('is-visible', 'is-hover');
+  });
+  document.addEventListener('pointerover', (event) => {
+    const hovering = !!event.target.closest('a,button,input,video');
+    cursor.classList.toggle('is-hover', hovering);
+    trail.classList.toggle('is-hover', hovering);
+  });
+})();
+
+// Give the hero photo a gentle pointer-controlled depth tilt on desktop.
+(() => {
+  const scene = document.querySelector('.main1 .sub11');
+  const car = scene?.querySelector('img');
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  if (!scene || !car || !finePointer.matches || reducedMotion.matches) return;
+  scene.addEventListener('pointermove', (event) => {
+    const bounds = scene.getBoundingClientRect();
+    const horizontal = (event.clientX - bounds.left) / bounds.width - .5;
+    const vertical = (event.clientY - bounds.top) / bounds.height - .5;
+    car.style.setProperty('--car-tilt-y', `${horizontal * 8}deg`);
+    car.style.setProperty('--car-tilt-x', `${vertical * -5}deg`);
+    scene.style.setProperty('--light-x', `${(horizontal + .5) * 100}%`);
+    scene.style.setProperty('--light-y', `${(vertical + .5) * 100}%`);
+  }, { passive: true });
+  scene.addEventListener('pointerleave', () => {
+    car.style.setProperty('--car-tilt-y', '0deg');
+    car.style.setProperty('--car-tilt-x', '0deg');
+    scene.style.setProperty('--light-x', '50%');
+    scene.style.setProperty('--light-y', '45%');
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
