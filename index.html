@@ -639,6 +639,70 @@ img,video{max-width:100%}
   100%{transform:perspective(1100px) translate3d(.6%,0,0) rotateX(1.2deg) rotateY(4deg) scale(1.045);filter:brightness(.78) saturate(1.12)}
 }
 @media(max-width:600px) and (prefers-reduced-motion:reduce){.main1 .sub11 img{animation:none;transform:none;will-change:auto}}
+/* Preserve source detail and the full frame for video playback */
+.main2 video{filter:none!important;object-fit:contain;background:#050505;}
+/* Video and surrounding frame share identical dimensions */
+.main2{position:relative;isolation:isolate;width:100%;height:82vh;min-height:460px;padding:0;overflow:hidden;background:#050505;border:0;border-radius:24px;box-sizing:border-box}
+.main2:before{display:none}
+.main2 video{display:block;position:absolute;inset:0;width:100%;height:100%;max-height:none;margin:0;object-fit:contain;object-position:center;filter:none!important;background:#050505;border:0;border-radius:24px;box-shadow:none;transform:none}
+@media(max-width:768px){.main2{width:100%;height:65vh;min-height:360px;padding:0;border-radius:18px}.main2 video{width:100%;height:100%;border-radius:18px}}
+/* Ferrari side graphics fill the letterbox gutters while keeping the full video visible */
+.main2{background:radial-gradient(ellipse at 8% 50%,rgba(226,0,25,.34),transparent 26%),radial-gradient(ellipse at 92% 50%,rgba(226,0,25,.3),transparent 26%),linear-gradient(90deg,#16070a 0%,#09090b 18%,#09090b 82%,#16070a 100%);border:1px solid rgba(255,255,255,.13);border-radius:28px;box-shadow:inset 0 0 70px rgba(220,0,28,.09),0 22px 60px rgba(0,0,0,.35)}
+.main2:after{content:"SCUDERIA                                        FERRARI";position:absolute;z-index:1;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 2vw;color:rgba(255,255,255,.2);font-size:clamp(9px,.85vw,13px);font-weight:700;letter-spacing:.34em;white-space:pre;pointer-events:none;text-shadow:0 0 18px rgba(255,0,35,.28)}
+.main2 video{z-index:2;max-width:100%;object-fit:cover;background:transparent;border-radius:22px;box-shadow:0 0 0 1px rgba(255,255,255,.16),0 14px 40px rgba(0,0,0,.5)}
+@media(max-width:768px){.main2{border-radius:18px}.main2:after{padding:0 1vw;letter-spacing:.2em;font-size:8px}.main2 video{border-radius:14px}}
+/* Framed landscape video with Ferrari accents in both side gutters */
+@media(min-width:769px){
+  .main2{background:radial-gradient(ellipse at 8% 50%,rgba(229,27,43,.3),transparent 28%),radial-gradient(ellipse at 92% 50%,rgba(229,27,43,.3),transparent 28%),linear-gradient(90deg,#13070a,#08090b 24%,#08090b 76%,#13070a);border-radius:28px;overflow:hidden;box-shadow:inset 0 0 70px rgba(229,27,43,.1),0 18px 54px rgba(0,0,0,.42)}
+  .main2:after{content:"SCUDERIA" "\A" "FERRARI";white-space:pre;position:absolute;z-index:1;left:1.8%;top:50%;transform:translateY(-50%);display:block;color:rgba(255,255,255,.24);font-size:clamp(9px,1vw,14px);font-weight:700;line-height:5.5;letter-spacing:.18em;text-align:center;text-shadow:0 0 18px rgba(255,0,35,.35);pointer-events:none}
+  .main2:before{content:"FERRARI" "\A" "SCUDERIA";display:block;position:absolute;z-index:1;inset:50% 1.8% auto auto;transform:translateY(-50%);color:rgba(255,255,255,.24);font-size:clamp(9px,1vw,14px);font-weight:700;line-height:5.5;letter-spacing:.18em;text-align:center;text-shadow:0 0 18px rgba(255,0,35,.35);pointer-events:none}
+  .main2 video{left:50%;right:auto;width:78%;height:100%;object-fit:cover;transform:translateX(-50%);border:1px solid rgba(255,255,255,.22);border-radius:24px;box-shadow:0 0 0 1px rgba(255,255,255,.06),0 14px 40px rgba(0,0,0,.5)}
+}
+@media(max-width:768px){.main2{border-radius:18px}.main2 video{left:0;width:100%;height:100%;transform:none;border-radius:18px}}
+/* Fullscreen-only Ferrari frame and side graphics */
+.main2:fullscreen,.main2:-webkit-full-screen{width:100vw;height:100vh;min-height:0;padding:0;display:block;overflow:hidden;border:0;border-radius:0;background:radial-gradient(ellipse at 7% 50%,rgba(229,27,43,.34),transparent 26%),radial-gradient(ellipse at 93% 50%,rgba(229,27,43,.34),transparent 26%),linear-gradient(90deg,#16070a,#08090b 24%,#08090b 76%,#16070a);box-shadow:inset 0 0 90px rgba(229,27,43,.16)}
+.main2:fullscreen:before,.main2:-webkit-full-screen:before{content:"FERRARI\A SCUDERIA";display:block;position:absolute;z-index:1;right:2%;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.3);font-size:clamp(11px,1.2vw,18px);font-weight:700;line-height:5;letter-spacing:.2em;text-align:center;white-space:pre;text-shadow:0 0 22px rgba(255,0,35,.4);pointer-events:none}
+.main2:fullscreen:after,.main2:-webkit-full-screen:after{content:"SCUDERIA\A FERRARI";display:block;position:absolute;z-index:1;left:2%;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.3);font-size:clamp(11px,1.2vw,18px);font-weight:700;line-height:5;letter-spacing:.2em;text-align:center;white-space:pre;text-shadow:0 0 22px rgba(255,0,35,.4);pointer-events:none}
+.main2:fullscreen video,.main2:-webkit-full-screen video{position:absolute;left:50%;right:auto;top:50%;width:78vw;height:84vh;max-width:none;max-height:none;transform:translate(-50%,-50%);object-fit:contain;background:transparent;border:1px solid rgba(255,255,255,.28);border-radius:26px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 20px 55px rgba(0,0,0,.6)}
+@media(max-width:768px){.main2:fullscreen video,.main2:-webkit-full-screen video{width:78vw;height:84vh;border-radius:20px}}
+/* Fullscreen frame UI: full-bleed media inside a polished video card */
+.main2:fullscreen,.main2:-webkit-full-screen{padding:0;background:radial-gradient(ellipse at 50% 0,rgba(229,27,43,.24),transparent 42%),linear-gradient(145deg,#151014,#050506 64%,#17080c);border:0;border-radius:0}
+.main2:fullscreen:before,.main2:-webkit-full-screen:before,.main2:fullscreen:after,.main2:-webkit-full-screen:after{display:none}
+.main2:fullscreen video,.main2:-webkit-full-screen video{position:absolute;left:50%;right:auto;top:50%;width:92vw;height:84vh;max-width:none;max-height:none;transform:translate(-50%,-50%);object-fit:contain;object-position:center;background:transparent;border:1px solid rgba(255,255,255,.24);border-radius:26px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 26px 90px rgba(0,0,0,.66)}
+.fullscreen-video-ui{display:none}
+.main2:fullscreen .fullscreen-video-ui,.main2:-webkit-full-screen .fullscreen-video-ui{position:absolute;z-index:3;inset:8vh 5vw;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;color:rgba(255,255,255,.9);text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.fullscreen-ui-top,.fullscreen-ui-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:clamp(9px,.85vw,12px);font-weight:700;letter-spacing:.2em}
+.fullscreen-brand{display:flex;align-items:center;gap:10px}.fullscreen-brand b{display:grid;place-items:center;width:28px;height:28px;border:1px solid rgba(255,255,255,.62);border-radius:50%;background:rgba(229,27,43,.75);font:700 13px Georgia,serif}
+.fullscreen-mode{display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(12,12,14,.38);backdrop-filter:blur(10px)}
+.fullscreen-mode i{width:7px;height:7px;border-radius:50%;background:#ed2437;box-shadow:0 0 12px #ed2437}
+.fullscreen-ui-bottom{color:rgba(255,255,255,.68);font-size:9px;letter-spacing:.16em}
+@media(max-width:768px){.main2:fullscreen video,.main2:-webkit-full-screen video{width:94vw;height:84vh;border-radius:20px}.main2:fullscreen .fullscreen-video-ui,.main2:-webkit-full-screen .fullscreen-video-ui{inset:8vh 5vw}.fullscreen-ui-top,.fullscreen-ui-bottom{font-size:8px;letter-spacing:.1em}.fullscreen-brand{gap:6px}.fullscreen-brand b{width:24px;height:24px}.fullscreen-mode{gap:6px;padding:8px 10px}}
+/* Reference-style wide inset video panel */
+@media(min-width:769px){
+  .main2{height:82vh;min-height:460px;padding:4vh 3.5vw;box-sizing:border-box;display:grid;place-items:center;overflow:hidden;border:0;border-radius:0;background:linear-gradient(180deg,#0d0e12,#090a0d 76%,#111013);box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+  .main2:before,.main2:after{display:none;content:none}
+  .main2 video{position:relative;inset:auto;left:auto;right:auto;top:auto;width:100%;height:100%;max-width:none;max-height:none;transform:none;object-fit:cover;object-position:center;background:#030303;border:1px solid rgba(255,255,255,.14);border-radius:22px;box-shadow:0 18px 48px rgba(0,0,0,.48),0 0 0 1px rgba(0,0,0,.6)}
+}
+@media(max-width:768px){.main2{padding:3vh 3vw;box-sizing:border-box;background:#0a0b0e}.main2 video{border:1px solid rgba(255,255,255,.14);border-radius:18px}}
+/* Keep the whole video visible and use the side gutters as Ferrari artwork */
+@media(min-width:769px){
+  .main2{position:relative;background:radial-gradient(ellipse at 8% 50%,rgba(229,27,43,.28),transparent 28%),radial-gradient(ellipse at 92% 50%,rgba(229,27,43,.28),transparent 28%),linear-gradient(90deg,#16070a,#090a0d 22%,#090a0d 78%,#16070a);border-radius:26px;overflow:hidden}
+  .main2:before,.main2:after{position:absolute;z-index:1;top:50%;display:grid;place-items:center;transform:translateY(-50%);width:10%;color:rgba(255,255,255,.28);font-size:clamp(9px,.9vw,13px);font-weight:700;line-height:3.8;letter-spacing:.2em;text-align:center;white-space:pre;text-shadow:0 0 18px rgba(255,0,35,.36);pointer-events:none}
+  .main2:before{content:"SCUDERIA\A FERRARI";left:1%}
+  .main2:after{content:"FERRARI\A SCUDERIA";right:1%}
+  .main2 video{position:relative;z-index:2;inset:auto;left:auto;right:auto;top:auto;width:78%;height:100%;max-width:none;max-height:none;margin:0;transform:none;object-fit:contain;object-position:center;background:transparent;border:1px solid rgba(255,255,255,.22);border-radius:24px;box-shadow:0 12px 38px rgba(0,0,0,.48)}
+}
+@media(max-width:768px){.main2{background:#090a0d;border-radius:18px}.main2 video{object-fit:contain;object-position:center;background:transparent;border:1px solid rgba(255,255,255,.18);border-radius:18px}}
+/* Clean fullscreen view: remove the overlay badge and frame outline */
+.main2:fullscreen .fullscreen-video-ui,.main2:-webkit-full-screen .fullscreen-video-ui{display:none!important}
+.main2:fullscreen video,.main2:-webkit-full-screen video{border:0!important;border-radius:24px!important;box-shadow:none!important;overflow:hidden}
+@media(max-width:768px){.main2:fullscreen video,.main2:-webkit-full-screen video{border-radius:20px!important}}
+/* Remove leftover graphic panels and outlines; retain only rounded video corners */
+.main2:before,.main2:after{display:none!important;content:none!important}
+.fullscreen-video-ui{display:none!important}
+.main2{background:#090a0d!important;border:0!important;box-shadow:none!important}
+.main2 video{border:0!important;border-radius:24px!important;box-shadow:none!important}
+@media(max-width:768px){.main2 video{border-radius:18px!important}}
 </style>
     <link rel="icon" href="https://www.edigitalagency.com.au/wp-content/uploads/Ferrari-logo-png-large-icon-badge.png">
 </head>
@@ -684,9 +748,15 @@ img,video{max-width:100%}
     
 
     <div class="main2" id="video">
-        <video src="https://www.pexels.com/download/video/29498800/" loop muted autoplay playsinline preload="metadata" disablepictureinpicture disableremoteplayback controlslist="nodownload noplaybackrate noremoteplayback">
+        <video loop muted autoplay playsinline preload="auto" disablepictureinpicture controlslist="nodownload noplaybackrate no-volume">
+            <source src="https://v1.pinimg.com/videos/iht/expMp4/7f/b3/c5/7fb3c53c8abe981fa9b7662c6d75ead7_720w.mp4" media="(max-width: 768px)" type="video/mp4">
+            <source src="https://www.pexels.com/download/video/29498823/" media="(min-width: 769px)" type="video/mp4">
             
         </video>
+        <div class="fullscreen-video-ui" aria-hidden="true">
+            <div class="fullscreen-ui-top"><span class="fullscreen-brand"><b>F</b> SCUDERIA FERRARI</span><span class="fullscreen-mode"><i></i> CINEMATIC VIEW</span></div>
+            <div class="fullscreen-ui-bottom"><span>MADE FOR THE MOMENT</span><span>ESC&nbsp; · &nbsp;EXIT FULL SCREEN</span></div>
+        </div>
          
 
     </div>
@@ -852,6 +922,17 @@ try {
   }, { passive: true });
 })();
 
+// Double-click the video to show the decorated fullscreen frame.
+(() => {
+  const frame = document.querySelector('.main2');
+  const video = frame?.querySelector('video');
+  if (!frame || !video) return;
+  video.addEventListener('dblclick', () => {
+    if (document.fullscreenElement) return;
+    const enterFullscreen = frame.requestFullscreen || frame.webkitRequestFullscreen;
+    if (enterFullscreen) enterFullscreen.call(frame);
+  });
+})();
 // Toggle the compact phone navigation.
 (() => {
   const menu = document.querySelector('.sub13');
