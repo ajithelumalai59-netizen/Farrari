@@ -525,8 +525,8 @@ img,video{max-width:100%}
 .ferrari-cursor:after{content:"";position:absolute;left:50%;top:50%;width:4px;height:4px;border-radius:50%;background:#ff2638;transform:translate(-50%,-50%);box-shadow:0 0 9px rgba(255,38,56,.9)}
 .ferrari-cursor.is-visible{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .ferrari-cursor.is-hover{transform:translate(-50%,-50%) scale(1.45);border-color:#fff;background:rgba(229,27,43,.13)}
-@media (hover:hover) and (pointer:fine){body{cursor:none}a,button,input,video{cursor:none}.ferrari-cursor{display:block}}
-@media (hover:none),(prefers-reduced-motion:reduce){.ferrari-cursor{display:none!important}body,a,button,input,video{cursor:auto}}
+@media (hover:hover) and (pointer:fine){body.custom-cursor-active,body.custom-cursor-active a,body.custom-cursor-active button,body.custom-cursor-active input,body.custom-cursor-active video{cursor:none!important}.ferrari-cursor,.ferrari-cursor-trail{display:block}}
+@media (hover:none),(prefers-reduced-motion:reduce){.ferrari-cursor,.ferrari-cursor-trail{display:none!important}body,a,button,input,video{cursor:auto!important}}
 .ferrari-cursor-trail{position:fixed;z-index:9998;top:0;left:0;width:54px;height:54px;border:1px solid rgba(255,60,73,.34);border-radius:50%;pointer-events:none;opacity:0;transform:translate(-50%,-50%);transition:opacity .25s ease,width .3s ease,height .3s ease,border-color .3s ease}
 .ferrari-cursor-trail.is-visible{opacity:1}
 .ferrari-cursor-trail.is-hover{width:68px;height:68px;border-color:rgba(255,255,255,.42)}
@@ -626,7 +626,7 @@ img,video{max-width:100%}
 @media(max-width:600px){
   .main1 .sub11 picture{display:block;width:100%;height:100%}
   .main1 .sub11 img{object-position:center center}
-  .main1 .sub14,.main1:hover .sub14{top:clamp(72px,14svh,100px)!important;transform:none!important;font-size:clamp(30px,9vw,38px)!important;letter-spacing:.1em!important}
+  .main1 .sub14,.main1:hover .sub14{top:clamp(72px,14svh,100px)!important;transform:none!important;font-size:clamp(33px,10vw,40px)!important;letter-spacing:.1em!important}
 }
 
 /* Automatic 3D motion for the phone-only Ferrari image */
@@ -777,10 +777,32 @@ try {
 (() => {
   const cursor = document.querySelector('.ferrari-cursor');
   const trail = document.querySelector('.ferrari-cursor-trail');
-  const mouseMode = matchMedia('(hover: hover) and (pointer: fine)');
-  if (!cursor || !trail || !mouseMode.matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  let x = 0, y = 0, trailX = 0, trailY = 0, visible = false;
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  if (!cursor || !trail || !finePointer.matches || reducedMotion.matches) return;
+
+  let x = 0, y = 0, trailX = 0, trailY = 0, visible = false, frame = 0;
+  const followTrail = () => {
+    if (!visible) { frame = 0; return; }
+    const dx = x - trailX;
+    const dy = y - trailY;
+    trailX += dx * .18;
+    trailY += dy * .18;
+    trail.style.transform = `translate3d(${trailX}px, ${trailY}px, 0) translate(-50%, -50%)`;
+    if (Math.abs(dx) + Math.abs(dy) > .35) frame = requestAnimationFrame(followTrail);
+    else frame = 0;
+  };
+  const hideCursor = () => {
+    visible = false;
+    document.body.classList.remove('custom-cursor-active');
+    cursor.classList.remove('is-visible', 'is-hover');
+    trail.classList.remove('is-visible', 'is-hover');
+    if (frame) cancelAnimationFrame(frame);
+    frame = 0;
+  };
+
   document.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'touch') return;
     x = event.clientX;
     y = event.clientY;
     cursor.style.left = `${x}px`;
@@ -788,25 +810,19 @@ try {
     if (!visible) {
       trailX = x;
       trailY = y;
+      trail.style.transform = `translate3d(${trailX}px, ${trailY}px, 0) translate(-50%, -50%)`;
       visible = true;
       cursor.classList.add('is-visible');
       trail.classList.add('is-visible');
     }
+    document.body.classList.add('custom-cursor-active');
+    if (!frame) frame = requestAnimationFrame(followTrail);
   }, { passive: true });
-  const follow = () => {
-    trailX += (x - trailX) * 0.14;
-    trailY += (y - trailY) * 0.14;
-    trail.style.transform = `translate3d(${trailX}px, ${trailY}px, 0) translate(-50%, -50%)`;
-    requestAnimationFrame(follow);
-  };
-  requestAnimationFrame(follow);
-  document.addEventListener('pointerleave', () => {
-    visible = false;
-    cursor.classList.remove('is-visible', 'is-hover');
-    trail.classList.remove('is-visible', 'is-hover');
-  });
+  document.addEventListener('pointerleave', hideCursor);
+  window.addEventListener('blur', hideCursor);
   document.addEventListener('pointerover', (event) => {
-    const hovering = !!event.target.closest('a,button,input,video');
+    const target = event.target;
+    const hovering = target instanceof Element && !!target.closest('a,button,input,video');
     cursor.classList.toggle('is-hover', hovering);
     trail.classList.toggle('is-hover', hovering);
   });
